@@ -803,7 +803,4 @@ class ScyllaNode(Node):
         return Prometheus(ip)
 
     def metrics(self, select = []):
-        met = self.prometheus().metrics()
-        if select == []:
-            return met
-        return {k:v for k,v in met.iteritems() if k in select}
+        return self.prometheus().metrics(select=select)
